@@ -1,0 +1,21 @@
+! Secuencia aplicada en R1. Sustituir el marcador por una comunidad privada.
+configure terminal
+interface FastEthernet0/0
+ ip address 10.21.39.129 255.255.255.248
+ speed 100
+ full-duplex
+ no shutdown
+exit
+service dhcp
+ip dhcp excluded-address 10.21.39.129 10.21.39.130
+ip dhcp excluded-address 10.21.39.132 10.21.39.134
+ip dhcp pool LAN-ZABBIX
+ network 10.21.39.128 255.255.255.248
+ default-router 10.21.39.129
+exit
+access-list 31 permit host 10.21.39.131
+snmp-server community <COMUNIDAD_SNMP_PRIVADA> ro 31
+cdp log mismatch duplex
+end
+copy running-config startup-config
+

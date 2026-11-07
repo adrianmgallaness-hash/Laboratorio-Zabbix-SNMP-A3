@@ -1,0 +1,17 @@
+! Secuencia aplicada en Switch. Usar la misma comunidad privada que en R1.
+configure terminal
+interface GigabitEthernet0/0
+ no negotiation auto
+ speed 100
+ duplex full
+exit
+interface Vlan1
+ ip address 10.21.39.130 255.255.255.248
+ no shutdown
+exit
+ip default-gateway 10.21.39.129
+access-list 31 permit host 10.21.39.131
+snmp-server community <COMUNIDAD_SNMP_PRIVADA> ro 31
+end
+copy running-config startup-config
+
