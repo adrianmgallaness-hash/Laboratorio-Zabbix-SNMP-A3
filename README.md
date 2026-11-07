@@ -1,5 +1,7 @@
 ## Video demostrativo
 
+[![Portada del video del laboratorio A3](portada-youtube-a3.png)](https://youtu.be/YAdXeqfQIGc)
+
 [▶ Ver la demostración del laboratorio A3 en YouTube](https://youtu.be/YAdXeqfQIGc)
 
 # Laboratorio A3 · DHCP y monitoreo SNMP con Zabbix
