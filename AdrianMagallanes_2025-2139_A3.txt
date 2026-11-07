@@ -6,7 +6,5 @@ Repositorio:
 https://github.com/adrianmgallaness-hash/Laboratorio-Zabbix-SNMP-A3
 
 Video de YouTube:
-PENDIENTE DE GRABACION Y PUBLICACION.
-
-Estado: documento provisional. Agregar el enlace real de YouTube antes de entregar.
+https://youtu.be/YAdXeqfQIGc
 
