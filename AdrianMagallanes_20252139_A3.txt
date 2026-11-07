@@ -1,5 +1,5 @@
 Nombre: Adrian Magallanes
-Matricula: 2025-2139
+Matricula: 20252139
 Practica: A3
 
 Repositorio:
@@ -7,4 +7,3 @@ https://github.com/adrianmgallaness-hash/Laboratorio-Zabbix-SNMP-A3
 
 Video de YouTube:
 https://youtu.be/YAdXeqfQIGc
-

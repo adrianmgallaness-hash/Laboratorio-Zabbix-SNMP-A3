@@ -4,7 +4,7 @@
 
 # Laboratorio A3 · DHCP y monitoreo SNMP con Zabbix
 
-**Autor** Adrian Magallanes · **Matrícula** 2025-2139 · **Entorno** GNS3, Ubuntu Desktop 24.04.5 LTS y Zabbix 7.0
+**Autor** Adrian Magallanes · **Matrícula** 20252139 · **Entorno** GNS3, Ubuntu Desktop 24.04.5 LTS y Zabbix 7.0
 
 ## Propósito del laboratorio
 
@@ -38,6 +38,10 @@ R1 excluye 10.21.39.129–130 y 10.21.39.132–134. Así deja disponible 10.21.3
 
 ![Dirección recibida y conectividad desde Ubuntu](evidencias/ubuntu-dhcp.png)
 
+La ruta de Ubuntu muestra `proto dhcp`, que confirma cómo recibió la puerta de enlace y la IP de origen. En esa captura, la LAN aún no tenía salida para resolver `repo.zabbix.com`; se utilizó NAT temporalmente para instalar Zabbix y luego se volvió a la LAN.
+
+![Ruta de Ubuntu obtenida por DHCP](evidencias/ubuntu-ruta-dhcp.png)
+
 ### SNMP y lista de acceso
 
 R1 y Switch usan una comunidad SNMP con permiso **RO** y la ACL **31**. La ACL permite la dirección 10.21.39.131 de Ubuntu. La comunidad real se reemplazó por un marcador en los archivos públicos. El siguiente fragmento representa la configuración sin revelar ese valor.
@@ -47,9 +51,11 @@ access-list 31 permit 10.21.39.131
 snmp-server community <COMUNIDAD_SNMP_OCULTA> RO 31
 ```
 
-La ACL de R1 registró consultas coincidentes desde la IP permitida. La configuración de Switch contiene la misma regla. La prueba de rechazo desde otra IP no se realizó y queda indicada como pendiente.
+Las ACL de R1 y Switch registraron consultas coincidentes desde la IP permitida. La captura de la ACL del switch es anterior al ajuste de dúplex y conserva un aviso histórico; las capturas finales del enlace, más abajo, muestran la corrección. La prueba de rechazo desde otra IP no se realizó y queda indicada como pendiente.
 
 ![ACL 31 y coincidencias en R1](evidencias/acl-r1.png)
+
+![ACL 31 y coincidencias en Switch antes del ajuste final del enlace](evidencias/acl-switch-previo-ajuste.png)
 
 Desde Ubuntu se consultó el OID **.1.3.6.1.2.1.1.5.0**, correspondiente a sysName.0. Las respuestas identificaron a **R1** y **Switch**.
 
@@ -78,6 +84,8 @@ En **Monitoring → Latest data**, R1 mostró valores recientes de uso de CPU y 
 
 Después de corregir el enlace R1–Switch, las dos interfaces mostraron **100 Mb/s y full-duplex**.
 
+La captura de Zabbix de Switch indica **1 Gbps** en el ítem `Interface Gi0/0: Speed`, mientras las dos salidas `show interfaces` indican **100 Mb/s**. Se documenta la diferencia sin atribuirle una causa no verificada. Para comprobar la velocidad y el dúplex configurados y operativos se usan las salidas de consola de ambos extremos; el valor del ítem SNMP queda como dato observado que requiere revisión adicional.
+
 ![Interfaz Fa0/0 de R1](evidencias/enlace-r1-full-duplex.png)
 
 ![Interfaz Gi0/0 de Switch](evidencias/enlace-switch-full-duplex.png)
@@ -85,10 +93,10 @@ Después de corregir el enlace R1–Switch, las dos interfaces mostraron **100 M
 ## Archivos del repositorio
 
 - [Procedimiento de implementación y verificación](docs/VERIFICACION.md)
-- [Comandos IOS de R1 y Switch](scripts/README.md)
+- [Comandos IOS y registro de comandos Ubuntu](scripts/README.md)
 - [Running-configs con comunidad oculta](configs/README.md)
 - [Índice de capturas](evidencias/README.md)
-- [TXT de entrega A3](AdrianMagallanes_2025-2139_A3.txt)
+- [TXT de entrega A3](AdrianMagallanes_20252139_A3.txt)
 
 Los running-configs corresponden al estado final de los equipos. Solo se sustituyó el valor de la comunidad SNMP en las copias publicadas.
 
@@ -100,4 +108,3 @@ El video de YouTube debe durar **como máximo 10 minutos** y mostrar la fecha, l
 
 - [Zabbix · Monitorizar un switch o router](https://www.zabbix.com/documentation/current/en/manual/guides/monitor_switch)
 - [Cisco · Comunidad SNMP de solo lectura y ACL](https://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html)
-
