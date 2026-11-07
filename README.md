@@ -10,13 +10,13 @@
 
 ## Propósito del laboratorio
 
-Configurar una LAN en la que R1 entregue por DHCP la dirección de Ubuntu Desktop y Zabbix consulte el estado del router y de un switch multicapa. Las consultas usan SNMPv2c con una comunidad de solo lectura. Una lista de acceso permite el sondeo únicamente desde la IP que recibe Ubuntu.
+Configurar una LAN en la que R1 entregue por DHCP la dirección de Ubuntu Desktop y Zabbix consulte el estado del router y del switch IOSvL2. Las consultas usan SNMPv2c con una comunidad de solo lectura. Una lista de acceso permite el sondeo únicamente desde la IP que recibe Ubuntu.
 
 El resultado esperado es observar en Zabbix valores recientes de ambos equipos, además de demostrar el origen de la IP del servidor y la restricción aplicada a SNMP.
 
 ## Topología y direccionamiento
 
-La topología operativa conecta R1 con Switch y Ubuntu Desktop con Switch. En GNS3, la máquina Ubuntu aparece como **PC-USUARIOS-1**.
+La topología operativa conecta R1 con el switch y Ubuntu Desktop con el switch. En GNS3, los nodos aparecen como **R1**, **SW-L2** y **ZABBIX-UBUNTU**. El hostname IOS del switch es **Switch**.
 
 ![Topología real del laboratorio en GNS3](evidencias/topologia-gns3.png)
 
@@ -25,8 +25,8 @@ La topología operativa conecta R1 con Switch y Ubuntu Desktop con Switch. En GN
 | Equipo e interfaz | Dirección | Función |
 |---|---|---|
 | R1 Fa0/0 · Cisco c7200 | 10.21.39.129/29 | Puerta de enlace, servidor DHCP y agente SNMP |
-| Switch Vlan1 · Cisco IOSvL2 multicapa | 10.21.39.130/29 | Dirección de gestión y agente SNMP |
-| Ubuntu Desktop ens33 · PC-USUARIOS-1 | 10.21.39.131/29 por DHCP | Servidor Zabbix y gestor SNMP |
+| Switch Vlan1 · Cisco IOSvL2 (nodo SW-L2) | 10.21.39.130/29 | Dirección de gestión y agente SNMP |
+| Ubuntu Desktop ens33 · ZABBIX-UBUNTU | 10.21.39.131/29 por DHCP | Servidor Zabbix y gestor SNMP |
 
 La red **10.21.39.128/29** utiliza los octetos 21 y 39 de la matrícula. Su máscara es **255.255.255.248**. R1 Fa0/0 se conecta con Switch Gi0/0. El enlace quedó a **100 Mb/s y full-duplex** en ambos extremos. Ubuntu llega a R1 y Switch por la misma LAN.
 

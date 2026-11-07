@@ -2,7 +2,7 @@
 
 ## Topología y direccionamiento
 
-El proyecto GNS3 conecta R1 con Switch y Ubuntu Desktop con el switch.
+El proyecto GNS3 conecta los nodos **R1**, **SW-L2** y **ZABBIX-UBUNTU**. Dentro de IOS y Zabbix, el switch se identifica como **Switch**.
 
 ![Topología en GNS3](topologia-gns3.png)
 
