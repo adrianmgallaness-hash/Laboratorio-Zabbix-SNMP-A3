@@ -1,6 +1,6 @@
 ## Video demostrativo
 
-Pendiente de grabación y publicación en YouTube. El enlace se colocará aquí, al principio del repositorio, antes de la entrega.
+[▶ Ver la demostración del laboratorio A3 en YouTube](https://youtu.be/YAdXeqfQIGc)
 
 # Laboratorio A3 · DHCP y monitoreo SNMP con Zabbix
 
@@ -94,7 +94,7 @@ Los running-configs corresponden al estado final de los equipos. Solo se sustitu
 
 ## Entrega individual
 
-El video de YouTube debe durar **como máximo 10 minutos** y mostrar la fecha, la hora, el rostro y la voz del autor. La demostración debe centrarse en la topología, el DHCP, la configuración SNMP de solo lectura y los datos recientes de R1 y Switch en Zabbix. El enlace del video se añadirá arriba y en el TXT antes de entregar.
+El video de YouTube debe durar **como máximo 10 minutos** y mostrar la fecha, la hora, el rostro y la voz del autor. La demostración debe centrarse en la topología, el DHCP, la configuración SNMP de solo lectura y los datos recientes de R1 y Switch en Zabbix. Su enlace figura al inicio de este README y en el TXT de entrega.
 
 ## Referencias
 
