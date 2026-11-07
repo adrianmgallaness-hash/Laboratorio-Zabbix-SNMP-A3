@@ -19,7 +19,7 @@ Asignar por DHCP la dirección del servidor Zabbix y comprobar desde su panel lo
 | Equipo | Dirección | Función |
 |---|---|---|
 | R1 · Cisco c7200 | 10.21.39.129/29 | Puerta de enlace, servidor DHCP y agente SNMP |
-| Switch · Cisco IOSvL2 | 10.21.39.130/29 en Vlan1 | Conmutación LAN y agente SNMP |
+| Switch multicapa · Cisco IOSvL2 | 10.21.39.130/29 en Vlan1 | Conmutación LAN y agente SNMP |
 | PC-USUARIOS-1 · Ubuntu Desktop | 10.21.39.131/29 por DHCP | Servidor Zabbix y gestor SNMP |
 
 La red 10.21.39.128/29 usa los octetos 21 y 39 derivados de la matrícula. R1 conecta Fa0/0 con Gi0/0 del switch. Ubuntu Desktop se conecta al switch y recibe la única dirección disponible del pool DHCP. El enlace R1–Switch quedó configurado a 100 Mb/s y full-duplex en ambos extremos.
